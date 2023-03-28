@@ -1,0 +1,31 @@
+def conversion(num):
+    k = num
+    A = []
+    while k > 0:
+        A.append(k % 2)
+        k = k // 2
+    new = ''
+    for i in range(len(A)):
+        new += str(A[-1 - i])
+    return new
+
+print("Введите десятичные элементы первого множества через пробел")
+a1 = input()
+A1 = a1.split()
+counter = 0
+Q = []
+s1 = set()
+s2 = set()
+for i in A1:
+    if i.isdigit() == True:
+        s1.add(int(i))
+        s2.add(int(conversion(int(i))))
+    else:
+        Q.append(i)
+print("десятичные элементы первого множества")
+print(*sorted(s1))
+print("двоичные элементы второго множества")
+print(*sorted(s2))
+if len(Q) != 0:
+    print("Невозможно преобразовать")
+    print(*Q)
